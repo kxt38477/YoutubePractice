@@ -1,0 +1,219 @@
+*,* ::after, *::before{
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif; /*ROBOTO 無襯線*/
+}
+
+body {
+    margin: 0;
+}
+
+/* 設計左上元件編排 */
+.header {
+    display: flex; /* flex為將物件縱向排列*/
+    justify-content: space-between; /* 將物件居中之中有空隙*/
+    align-items: center; /*居中*/
+    padding: 1rem;
+}
+.header_left {
+    display: flex;
+    align-items: center;
+}
+.header_menu {
+    margin: 0 16px ; /*順序為上右下左順時針*/
+}
+
+.youtube-logo {
+    margin-left: 16px; /*物件左邊間距16*/
+}
+/* 設計右上元件編排 */
+.menu-icons {
+    display:flex;
+    grid-template-columns: repeat(4,auto);
+    align-items: center;
+    grid-gap: 1.5rem;
+}
+/*將頭像設計成圓形*/
+.menu-channel-icon { 
+    width: 36px;
+    height: 36px;
+
+    border-radius: 50%;
+}
+/* 設計搜索欄位合併輸入框與按鈕 */
+.search-bar {
+    display: flex;
+    flex-grow: 1; /*將FLEX GROW設定為可擴充*/
+    margin: 0 4rem 0 6rem;
+}
+
+.search-input {
+    width: 100%; /*將Search bar擴充至最大*/
+    font-size: 1rem; /*將Search bar內的搜索字體設為1REM*/
+    padding: 0.6em;
+    border: 1px solid #c6c6c6;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+} 
+
+.search-btn {
+    display: flex;
+    align-items: center;
+    padding: 0 1.25rem;
+    border: 1px solid #c6c6c6;
+    background-color: #fbfbfb;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-left: none; /*搜索標籤左側邊線取消*/
+    cursor: pointer; /*當滑鼠游標指向搜索標籤時,滑鼠標籤變成Pointer*/
+}
+
+.search-btn:hover {
+    background-color: #f0f0f0;  /*游標移動到搜索鍵時顏色變色*/
+}
+
+.search-bar a {       /*更改麥克風位置*/
+    display: flex;
+    align-items: center;
+    margin-left: 1rem;
+}
+
+/* 撰寫網頁左側的元素 */
+
+.mainbody {
+    display: flex;
+    height: calc(100% - 70px); /*vh=view high 為螢幕可視範圍百分比，會隨著視窗大小而改變*/
+    
+}
+
+.sidebar {
+    background-color: white;
+    width: 230px;
+}
+
+.sidebar_category {
+    display: flex;
+    align-items: center;
+    cursor: pointer; /*滑鼠游標移動到選項時游標改變*/
+    padding: 15px 25px; /*將四個元素排列*/
+}
+
+.sidebar-font {
+    font-size: 0.9rem;
+    margin-left: 24px;
+}
+
+.sidebar_category.active {
+    background-color: #e5e5e5;
+    font-weight: bold;  /*將字體改變為粗體*/
+}
+
+.sidebar_category:hover {
+    background-color: #f9f9f9;
+}
+
+.sidebar_category.active:hover {
+    background-color: #ddd;
+}
+
+.video-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.thumbnail-image {
+    width: 100%;
+    height: 100%;
+}
+
+.video-description {
+    display: flex;
+    align-items: flex-start; /*將影片描述擺在video-description的最上方*/
+    margin-top: 1rem;
+}
+
+.channel-icon {
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    margin-right: 1rem;
+}
+
+.video-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.video-title {     /*更改影片標題*/
+    color: black;
+    text-decoration: none;  /*將下方線消除*/
+    font-weight: bold; /*字體加粗*/
+    margin-bottom: 0.5rem;
+}
+
+.video-channel-name {
+    font-size: 0.9rem;
+    margin-bottom: 0.1rem;
+    text-decoration: none; /*取消下劃線*/
+    transition: color 600ms;
+}
+
+.video-channel-name:hover {
+    color: #111;
+    font-weight: bold;  /*鼠標移動到此元件時字體加粗*/
+}
+
+.video-channel-name, .video-metadata {
+    color: #555;
+}
+
+.thumbnail {
+    position: relative;
+}
+
+.thumbnail::before {
+    content: attr(data-duration);
+    position: absolute; /*絕對位置*/
+    right: 5px;
+    bottom: 10px;
+    background-color: black;
+    color: white;
+    border-radius: 0.3rem;
+    font-size: 0.9rem;
+    padding: 0.1rem 0.3rem;
+}
+
+.video {
+    width: 100%;  /*原先mainbody的100vh為視窗可視大小,為改變mainbody背景顏色須將100vh更改為100%*/
+    background-color: #f9f9f9;
+}
+
+.video-section {
+    display: grid; /*影片區域呈網格狀排列*/
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /*利用minmax定義最小寬度值*/
+    grid-gap: 3rem 1rem;
+    margin: 0 1.5rem;
+    padding: 3rem 0;
+
+    border-top: 1px solid#ddd; /*將每個video-section上方加入1px的灰線*/
+}
+
+.video-section:first-child { /*第一個video-section的子元素不需要邊線*/
+    border:none
+}
+
+.video-section-title {
+    display: flex;
+    grid-column: 1/-1; /*推薦影片及按鈕占據整行*/
+    justify-content: space-between;
+    align-items: center;
+
+    margin: -0.5rem 0;
+}
+
+.video-section-title-close {
+    border: none;
+    background: none;
+    color: black;
+    cursor: pointer;
+    font-size: 1.5rem;
+}
